@@ -1,4 +1,5 @@
 # Getting started
+**Waring: this book is incomplete**
 
 ### TL;DR
 This is a terse book for one to learn some rust quickly. Skip to [install and test](#install-and-test) if you want to skip the boring bits.
