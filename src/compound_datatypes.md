@@ -105,4 +105,82 @@ fn main() {
 }
 ```
 
-You can 
+They are especially convenient in match statements
+```rust
+enum Choice {
+    Sit,
+    Walk(u32)
+}
+
+fn main() {
+    let choice = Choice::Walk(32);
+    match choice {
+        Choice::Sit => {
+            println!("You just sat around");
+        }
+        Choice::Walk(metres) => {
+            println!("You walked for {} metres!", metres);
+        }
+        
+    }
+}
+```
+
+A common enum is `Option<T>`. The T just means it can hold anything. 
+It is defined like so in the `core` and standard library
+```
+pub enum Option<T> {
+    None,
+    Some(T),
+}
+```
+
+```rust
+fn main() {
+    let number:u32 = u32::MAX; //set a u32 number to the largest it can be. 
+    // If it goes any higher, it will roll-around back to zero, unless if we state otherwise 
+    
+    // the method check add returns an Option<u32>. 
+    let number_result: Option<u32> = number.checked_add(4);
+    
+    // Let's see what happened
+    match number_result {
+        
+        // Some() is returned on success
+        Some(number) => {
+            println!("The addition succeeded and returned {}!", number);        
+        }
+        
+        // None is returned on failure
+        None => {
+            println!("The addition failed");
+        }
+    }
+    
+}
+```
+Option<T> is very common across all rust libraries
+See the [errors](errors.md) chapter for more details on Option<T> and error handling
+### Tuple
+```rust
+fn main() {
+    // Rust tuples have the type (type_name1, type_name2, type_name3...)
+    let tuple: (u32, i32);
+    
+    // Rust tuples are populated like so
+    tuple = (1,2);
+    
+    // Rust tuples implement Debug, which means you can print them with 0 effort
+    println!("{:?}", tuple);
+}
+```
+
+### Common standard library structures
+- std::Vec
+
+- std::String
+
+- std::Args
+
+- std::io::Error
+

@@ -48,18 +48,19 @@ fn print_type_name<T>(value: T) {
 
 Some common variables types are bellow:
 
-| Name   | Description                                             | Common use case                                                              |
-|--------|---------------------------------------------------------|------------------------------------------------------------------------------|
-| usize  | fast default system-dependant size for unsigned integer | Counting with numbers that are unlikely to be large                          | 
-| isize  | fast default system-dependant size of unsigned integer  | Counting with negative and positive numbers that are unlikely to be large    |
-| i32    | 32-bit signed integer                                   | Counting that may require a fixed size negative or positive value            |
-| u32    | 32-bit unsigned integer                                 | Counting that may require a fixed size positive value                        |
-| i64    | 64-bit signed integer                                   | Counting that may require a large negative or positive value                 |
-| u64    | 64-bit unsigned integer                                 | Counting that may require a large positive value                             |
-| f32    | A floating-point number with 32-bits of precision       | Approximate counting decimal numbers                                         |
-| f64    | A floating-point number with 64-buts of precision       | Approximate counting decimal number but more accurate                        |
-| &str   | pointer to a string of utf-8 characters                 | Using a static string like `"hello"` or passing around a pointer to a String |
-| String | Heap-allocated version of &str.                         | String manipulation, Lazy string passing-around                              |
+| Name    | Description                                             | Common use case                                                              |
+|---------|---------------------------------------------------------|------------------------------------------------------------------------------|
+| usize   | fast default system-dependant size for unsigned integer | Counting with numbers that are unlikely to be large                          | 
+| isize   | fast default system-dependant size of unsigned integer  | Counting with negative and positive numbers that are unlikely to be large    |
+| i32     | 32-bit signed integer                                   | Counting that may require a fixed size negative or positive value            |
+| u32     | 32-bit unsigned integer                                 | Counting that may require a fixed size positive value                        |
+| i64     | 64-bit signed integer                                   | Counting that may require a large negative or positive value                 |
+| u64     | 64-bit unsigned integer                                 | Counting that may require a large positive value                             |
+| f32     | A floating-point number with 32-bits of precision       | Approximate counting decimal numbers                                         |
+| f64     | A floating-point number with 64-buts of precision       | Approximate counting decimal number but more accurate                        |
+| &str    | pointer to a string of utf-8 characters                 | Using a static string like `"hello"` or passing around a pointer to a String |
+| String  | Heap-allocated version of &str.                         | String manipulation, Lazy string passing-around                              |
+| u8      | Unsigned byte                                           | Any low level bit manipulation                                               |
 
 Keep in mind:
 - Only **signed** variants of primitives can be less than 0. 

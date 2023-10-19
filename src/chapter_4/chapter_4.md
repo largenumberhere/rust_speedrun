@@ -84,7 +84,8 @@ Rust has a few different loop types
 Rust also allows you to `break` out of a loop or `continue` to the next iteration.
 
 ### Switch / Match
-Rust has a very powerful match statement. It forces you to always handle every possible case or set a default case to prevent bugs.
+Rust has a very powerful match statement. 
+In a match statement, you must cover all possibilities *or* add a default case.
 It is similar to a switch statement but with much stricter rules.
 ```rust
 fn main() {

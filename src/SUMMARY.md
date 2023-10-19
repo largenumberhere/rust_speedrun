@@ -12,7 +12,7 @@ Text added here is not added to final book
 - [References](references/references.md)
 - [traits]()
 - [generics]()
-- [Error handling]()
+- [Error handling](errors.md)
 - [Dirty tricks](dirty_tricks/dirty_tricks_unsafe.md)
   - [Mutating an immutable variable](dirty_tricks/change_non_mutable_variable.md)
 
