@@ -1,4 +1,5 @@
 # based on https://github.com/rust-lang/mdBook/wiki/Automated-Deployment%3A-GitHub-Actions
+# requires `Settings->Pages->Build and deployment` to be set to GitHub Action
 name: Deploy
 on:
   push:
