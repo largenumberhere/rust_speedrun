@@ -10,7 +10,7 @@ Error handling in rust has 2 categories
 
 ### Recoverable errors
 Recoverable errors are part of a function's return type.
-Rust has 2 wrapper types for recoverable errors, `Option<T>` and `Result<T,E>`.
+Rust has 2 wrapper types for recoverable errors, `Option<T>`
 - ### `Option<T>`
   This is how it's defined:
   ```rust
@@ -141,11 +141,128 @@ Rust has 2 wrapper types for recoverable errors, `Option<T>` and `Result<T,E>`.
   }
   ```
   It is like option, except an error has information.
+  You can also use `.unwrap()` and `.expect("")` to convert it to an unrecoverable error
   
+  Let's handle a `Result`. In this case, we'll just print the error
+  ```rust
+  fn main() {
+    let text: Result<String, std::io::Error> = std::fs::read_to_string("file.txt");
+    match text {
+        Ok(v) => {
+            println!("read '{}' from file.txt", v);
+        }
+        Err(e) => {
+            println!("Error reading from file.txt:\n {:?}",e);
+        }
+    }
+  
+  }
+  ```
+  
+  We could also write it like this
+    ```rust
+  fn main() {
+    // Rust can infer a single type if we use _
+    let text: Result<String, _> = std::fs::read_to_string("file.txt");
+    match text {
+        Ok(v) => {
+            println!("read '{}' from file.txt", v);
+        }
+        Err(e) => {
+            println!("Error reading from file.txt:\n {:?}",e);
+        }
+    }
+  
+  }
+  ```
+  
+  Or like this
+  ```rust
+  fn main() {
+  // Rust can infer the entire return type
+  let text = std::fs::read_to_string("file.txt");
+  match text {
+    Ok(v) => {
+        println!("read '{}' from file.txt", v);
+    }
+    Err(e) => {
+        println!("Error reading from file.txt:\n {:?}",e);
+    }
+  }
+
+  }
+  ```
+  
+  Or like this:
+  ```rust
+  fn main() {
+  // Rust can infer the entire return type
+  let text: Result<_,_> = std::fs::read_to_string("file.txt");
+  match text {
+    Ok(v) => {
+        println!("read '{}' from file.txt", v);
+    }
+    Err(e) => {
+        println!("Error reading from file.txt:\n {:?}",e);
+    }
+  }
+
+  }
+  ```
+  Etc.. Rust's type inference can be very useful in working with error types
+
+  Let's make an error
+  ```rust
+  #[derive(Debug)] // make it printable with no effort
+  struct Number2MustNotBeZero;
+  
+  fn divide(a: i32, b: i32) -> Result<i32, Number2MustNotBeZero> {
+    if b == 0 {
+      return Err(Number2MustNotBeZero)
+    }
+  
+    return Ok(a / b);
+  }
+  
+  
+  fn main() {
+      let a = 10;
+      let b = 0;
+  
+      let result = divide(a,b);
+      match result {
+          Ok(v) => {
+              println!("result was {}", v)
+          }
+  
+          Err(e) => {
+              println!("division failed becase '{:?}'", e);
+          }
+      }
+  }
+  ```
+  
+  You can use an enum for errors
+  ```rust
+  #[derive(Debug)]
+  enum StringDivisionError {
+    TooShort,
+    NotANumber
+  }
+  
+  fn divide_string(number1: &str, number2: i32) -> Result<i32, StringDivisionError> {
+         
+  
+  
+  }
+
+  ```
+
 
 
 ### Conversion between `Result<T,E>` and `Option<T>` 
 
+### Error Propagation
 
 
 ### Unrecoverable errors
