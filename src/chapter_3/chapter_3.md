@@ -61,7 +61,7 @@ Some common variables types are bellow:
 | &str    | pointer to a string of utf-8 characters                 | Using a static string like `"hello"` or passing around a pointer to a String |
 | String  | Heap-allocated version of &str.                         | String manipulation, Lazy string passing-around                              |
 | u8      | Unsigned byte                                           | Any low level bit manipulation                                               |
-
+| bool    | A boolean, true or false. Same size as u8 but type safe | Any logic where yes or no makes sense                                        |
 Keep in mind:
 - Only **signed** variants of primitives can be less than 0. 
 - Greater bits means bigger numbers can be stored. 
