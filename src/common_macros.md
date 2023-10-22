@@ -5,6 +5,7 @@ It will show what the source code looks like after the macros have done what the
 ### Common function-like macros:
 - `println!("Hello world")` you have used before. It performs several actions behind the scenes that are necessary to print just about anything in a thread-safe manner. 
     If more than one argument is passed, it uses the same syntax as [format!](https://doc.rust-lang.org/std/fmt/) eg: `println!("{}", "hello!");`.
+    A newline is added after the text
 
 - `print!()` - very similar to println, you can use this to append to the console before calling `println!()`. If you are a avoiding a newline, you will have to flush the stdout manually.
 ```rust
@@ -19,8 +20,9 @@ It will show what the source code looks like after the macros have done what the
 - `include_str!("my_file.txt")` - read the contents of a file inside `src` at compile time and place it into a &str.
 
 - `env!("CARGO_PKG_VERSION")` - read an environment variable (such as  `CARGO_PKG_VERSION`) at compile time. See [Environment variables for crates](https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates) for useful options
-
-
+- `vec![]` - create a std::Vec with all the items between the `[` and `]`
+- `assert!(true)` - cause an error if the expression passed in does not evaluate to true 
+- `assert_eq!(true, true)` - cause an error if the two items passed in are not equal by value 
 ### Common attribute-like macros:
 Attribute-like macros are placed above something
 - `#[derive()]` - used for creating a default implementation of various traits aka interfaces. Examples: `#[derive(Debug)]`, `#[derive(Clone)]`, `#[derive(Copy)]`. Many more are added. These are for `structs` only. This is valid code : `#[derive(Clone, Debug, Copy)]`

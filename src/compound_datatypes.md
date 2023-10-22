@@ -140,7 +140,7 @@ fn main() {
     let number:u32 = u32::MAX; //set a u32 number to the largest it can be. 
     // If it goes any higher, it will roll-around back to zero, unless if we state otherwise 
     
-    // the method check add returns an Option<u32>. 
+    // the method u32::checked_add returns an Option<u32>. 
     let number_result: Option<u32> = number.checked_add(4);
     
     // Let's see what happened
@@ -176,7 +176,35 @@ fn main() {
 ```
 
 ### Common standard library structures
-- std::Vec
+- std::vec::Vec
+    An array-list aka dynamic array.
+    ```rust
+    fn main() {
+        let mut my_vec = std::vec::Vec::new();
+        // you can insert items to a `mut`able vec with push
+        my_vec.push(1);
+        my_vec.push(2);       
+        my_vec.push(3);
+        
+        // as with most of the standard library, vec implements debug, so you may print it with the format specifier `"{:?}"` 
+        println!("{:?}", my_vec);
+        
+        // you can remove items with pop
+        let last =  my_vec.pop();
+        println!("last item in vec was: {:?}", last);
+        
+        // vec can be easily used as an iterator
+        for item in  my_vec.iter() {
+            println!("my_vec contains '{}'", item);
+        }
+        
+        // vec has a len method
+        let item_count = my_vec.len();
+        println!("my_vec has {} items", item_count);
+    }
+  ```
+    Because vec implements [Iterator](https://doc.rust-lang.org/std/iter/trait.Iterator.html) it has access to every single one of its interface \ 'trait' methods. Please take a look! 
+    See [rust vec documentation](https://doc.rust-lang.org/std/vec/struct.Vec.html) for a peek at it all!
 
 - std::String
 
